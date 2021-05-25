@@ -1,9 +1,10 @@
 <template>
+  <navbar />
   <div class="home">
     <!-- <h1>Welcome, {{ name }}</h1> -->
-    {{ name }}
+    <!-- {{ name }} -->
     <!-- <img :src="name.photoURL" alt="profile" /> -->
-    <button class="logout btn btn-danger" @click="Logout">Logout</button>
+    <!-- <button class="logout btn btn-danger" @click="Logout">Logout</button> -->
   </div>
 </template>
 
@@ -11,8 +12,12 @@
 import { ref, onBeforeMount } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import firebase from "firebase";
+import Navbar from "../components/Navbar.vue";
 
 export default {
+  components: {
+    Navbar,
+  },
   setup() {
     const name = ref("");
     const router = useRouter();
