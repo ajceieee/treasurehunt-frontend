@@ -25,7 +25,7 @@ export default {
         .auth()
         .signInWithPopup(provider)
         .then(() => {
-          alert("signed in!");
+          console.log("signed in!");
         })
         .catch((err) => {
           console.log(err);
