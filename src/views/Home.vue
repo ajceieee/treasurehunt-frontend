@@ -1,39 +1,68 @@
 <template>
   <navbar />
-  <div class="container home py-3">
-    <!-- <h1>Welcome, {{ name }}</h1> -->
-    <!-- {{ name }} -->
-    <!-- <img :src="name.photoURL" alt="profile" /> -->
-    <!-- <button class="logout btn btn-danger" @click="Logout">Logout</button> -->
-    <div class="card mx-auto" style="width: 20rem">
-      <img class="card-img-top" :src="name.photoURL" alt="profile" />
-      <h5 class="card-title mx-auto">Level #</h5>
-      <div class="card-body">This is some text within a card body.</div>
-    </div>
+  <div class="container">
+    <div class="row">
+      <div class="col col-6">
+        <h4 class="mt-3"><b>Details</b></h4>
+        <form class="mt-3">
+          <div class="form-group mt-4">
+            <label for="exampleInputFullName">Full Name</label>
+            <input
+              type="fullName"
+              class="form-control"
+              id="exampleInputFullName"
+              placeholder="Full Name"
+              required
+            />
+          </div>
+          <div class="form-group mt-4">
+            <label for="exampleInputEmail">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail"
+              disabled
+              :value="email"
+            />
+          </div>
+          <div class="form-group mt-4">
+            <label for="exampleInputUcode">Virtual Code</label>
+            <input
+              type="uCode"
+              class="form-control"
+              id="exampleInputUcode"
+              placeholder="Enter Virtual Code"
+              required
+            />
+          </div>
 
-    <!-- <form class="form-inline">
-      <div class="form-group mx-sm-3 mb-2">
-        <input
-          type="password"
-          class="form-control"
-          id="inputPassword2"
-          placeholder="Password"
-        />
+          <button type="submit" @click="Logout" class="btn btn-success mt-4">
+            Submit & Start game
+          </button>
+        </form>
       </div>
-      <button type="submit" class="btn btn-primary mb-2">
-        Confirm identity
-      </button>
-    </form> -->
-    <form class="p-2">
-      <div class="row">
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Enter answer" />
-        </div>
-        <div class="col">
-          <input type="button" class="btn btn-primary" value="Verify" />
+      <div class="col col-6">
+        <h4 class="mt-3"><b>Rules</b></h4>
+        <div class="card">
+          1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+          minima soluta temporibus? Iste culpa minus iure corporis quibusdam.
+          Mollitia suscipit nesciunt error rerum, quidem accusantium iure fugiat
+          voluptates earum dolorum! <br /><br />
+          2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+          minima soluta temporibus? Iste culpa minus iure corporis quibusdam.
+          Mollitia suscipit nesciunt error rerum, quidem accusantium iure fugiat
+          voluptates earum dolorum! <br /><br />
+          3. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+          minima soluta temporibus? Iste culpa minus iure corporis quibusdam.
+          Mollitia suscipit nesciunt error rerum, quidem accusantium iure fugiat
+          voluptates earum dolorum! <br /><br />
+          4. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+          minima soluta temporibus? Iste culpa minus iure corporis quibusdam.
+          Mollitia suscipit nesciunt error rerum, quidem accusantium iure fugiat
+          voluptates earum dolorum!
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </template>
 
@@ -48,14 +77,14 @@ export default {
     Navbar,
   },
   setup() {
-    const name = ref("");
+    const email = ref("");
     const router = useRouter();
     const route = useRoute();
 
     onBeforeMount(() => {
       const user = firebase.auth().currentUser;
       if (user) {
-        name.value = user;
+        email.value = user.email;
       } else if (route.path == "/") {
         router.replace("/signup");
       }
@@ -69,7 +98,7 @@ export default {
         .catch((err) => alert(err.message));
     };
     return {
-      name,
+      email,
       Logout,
     };
   },
