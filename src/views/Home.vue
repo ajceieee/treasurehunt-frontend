@@ -2,7 +2,7 @@
   <navbar />
   <div class="container">
     <div class="row">
-      <div class="col col-6">
+      <div class="col-12 col-md-6">
         <h4 class="mt-3"><b>Details</b></h4>
         <form class="mt-3">
           <div class="form-group mt-4">
@@ -12,17 +12,18 @@
               class="form-control"
               id="exampleInputFullName"
               placeholder="Full Name"
+              :value="details.displayName"
               required
             />
           </div>
           <div class="form-group mt-4">
-            <label for="exampleInputEmail">Email address</label>
+            <label for="exampleInputEmail">Email Address</label>
             <input
               type="email"
               class="form-control"
               id="exampleInputEmail"
-              disabled
-              :value="email"
+              readonly
+              :value="details.email"
             />
           </div>
           <div class="form-group mt-4">
@@ -36,12 +37,12 @@
             />
           </div>
 
-          <button type="submit" @click="Logout" class="btn btn-success mt-4">
+          <button type="submit" @click="startGame" class="btn btn-success mt-4">
             Submit & Start game
           </button>
         </form>
       </div>
-      <div class="col col-6">
+      <div class="col-12 col-md-6">
         <h4 class="mt-3"><b>Rules</b></h4>
         <div class="card">
           1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
@@ -77,29 +78,25 @@ export default {
     Navbar,
   },
   setup() {
-    const email = ref("");
+    const details = ref("");
     const router = useRouter();
     const route = useRoute();
 
     onBeforeMount(() => {
       const user = firebase.auth().currentUser;
       if (user) {
-        email.value = user.email;
+        details.value = user;
       } else if (route.path == "/") {
         router.replace("/signup");
       }
     });
 
-    const Logout = () => {
-      firebase
-        .auth()
-        .signOut()
-        .then(console.log("Signed Out"))
-        .catch((err) => alert(err.message));
+    const startGame = () => {
+      router.replace("/game");
     };
     return {
-      email,
-      Logout,
+      details,
+      startGame,
     };
   },
 };

@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd">
-    <a class="navbar-brand px-3" href="#">Treasure Hunt</a>
+  <nav class="navbar navbar-light" style="background-color: #f0b917">
+    <a class="navbar-brand px-3" href="#"><b>Treasure Hunt</b></a>
     <!-- <button class="btn btn-danger mx-auto" @click="Logout">Logout</button> -->
     <a class="btn btn-danger px-3 mx-4" @click="Logout">Logout</a>
   </nav>
