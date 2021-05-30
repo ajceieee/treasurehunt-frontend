@@ -1,6 +1,5 @@
 <template>
   <navbar />
-  <!-- {{ user }} -->
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-6">
@@ -39,7 +38,9 @@
               id="exampleInputUcode"
               placeholder="Enter Virtual Code"
               required
-              v-model="uCode"
+              :value="findUid"
+              :v-model="uCode"
+              :readonly="getUid"
             />
           </div>
 
@@ -93,6 +94,8 @@ export default {
       uCode: null,
       details: null,
       displayName: null,
+      findUid: null,
+      getUid: false,
     };
   },
   created() {
@@ -105,11 +108,13 @@ export default {
         this.displayName = user.displayName;
         this.email = user.email;
         // console.log(this.uId);
+        this.checkUser();
       } else {
         this.user = null;
       }
     });
   },
+  beforeMount() {},
   methods: {
     async startGame() {
       const userData = {
@@ -140,58 +145,28 @@ export default {
           console.log(error);
         });
     },
+    async checkUser() {
+      const token = await firebase.auth().currentUser.getIdToken();
+      let config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      await axios
+        .get(
+          `https://mighty-island-44038.herokuapp.com/users/${this.uId}`,
+          config
+        )
+        .then((res) => {
+          this.getUid = true;
+          this.findUid = res.data.result[0].uCode;
+          console.log(res);
+          // alert("user already exists");
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
   },
-  // setup() {
-  //   const details = ref("");
-  //   const fullName = ref("");
-  //   const email = ref("");
-  //   const uCode = ref("");
-  //   const router = useRouter();
-  //   const route = useRoute();
-
-  //   onBeforeMount(() => {
-  //     const user = firebase.auth().currentUser;
-  //     if (user) {
-  //       details.value = user;
-  //     } else if (route.path == "/") {
-  //       router.replace("/signup");
-  //     }
-  //   });
-
-  //   const startGame = async () => {
-  //     const userData = {
-  //       fullName: fullName,
-  //       email: email,
-  //       uCode: uCode,
-  //     };
-  //     const token = await firebase.auth().currentUser.getIdToken();
-  //     let config = {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     };
-  //     await axios
-  //       .post(
-  //         "https://mighty-island-44038.herokuapp.com/users",
-  //         userData,
-  //         config
-  //       )
-  //       .then((response) => {
-  //         console.log(response);
-  //         alert("Added Details Successfull!");
-  //         router.replace("/game");
-  //       })
-  //       .catch(function (error) {
-  //         console.log(error);
-  //       });
-  //   };
-  //   return {
-  //     details,
-  //     startGame,
-  //     fullName,
-  //     email,
-  //     uCode,
-  //   };
-  // },
 };
 </script>
