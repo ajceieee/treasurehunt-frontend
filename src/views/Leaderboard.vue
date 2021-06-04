@@ -1,6 +1,6 @@
 <template>
   <navbar />
-  <h1>Leaderboard</h1>
+  <h1 class="m-5">Leaderboard</h1>
 </template>
 
 <script>
