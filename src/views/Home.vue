@@ -146,9 +146,9 @@ export default {
           userData,
           config
         )
-        .then(() => {
-          // console.log(response);
-          alert("Added Agent Successfull!");
+        .then((res) => {
+          console.log(res.data);
+          alert("Successfully Registered!");
           this.$router.push("/game");
         })
         .catch(function (error) {
@@ -171,29 +171,21 @@ export default {
           config
         )
         .then((res) => {
-          // console.log(res.data.result);
+          console.log(res.data);
           if (res.data.result != null) {
             this.uCode = res.data.result.uCode;
             this.displayName = res.data.result.fullName;
-            // if (this.uCode == undefined) {
-            // this.getUid = false;
-            // this.getFullName = false;
-            // } else {
             this.getUid = true;
             this.getFullName = true;
             this.btnDisabled = true;
             this.$router.push("/game");
             this.isLoading = false;
-            // }
           }
-
-          // console.log(res);
-          // alert("user already exists");
+          this.isLoading = false;
         })
         .catch(function (error) {
           console.log(error);
         });
-      // NProgress.done();
     },
   },
 };
