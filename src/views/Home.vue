@@ -1,6 +1,9 @@
 <template>
   <navbar />
-  <div class="container">
+  <div class="m-5" v-if="isLoading">
+    <div class="mx-auto" style="width: 50%; text-align: center">Loading...</div>
+  </div>
+  <div class="container" v-else>
     <div class="row">
       <div class="col-12 col-md-6">
         <h4 class="mt-3"><b>Details</b></h4>
@@ -104,6 +107,7 @@ export default {
       getUid: false,
       getFullName: false,
       btnDisabled: false,
+      isLoading: true,
       // uCode: null,
       // displayName: null,
     };
@@ -182,6 +186,7 @@ export default {
             this.getFullName = true;
             this.btnDisabled = true;
             this.$router.push("/game");
+            this.isLoading = false;
             // }
           }
 

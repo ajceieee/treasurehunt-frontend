@@ -125,13 +125,17 @@ export default {
           config
         )
         .then((res) => {
-          console.log(res.data);
-          // this.question = res.data.result;
-          this.level = res.data.result.level;
-          this.question = res.data.result.question;
-          this.image = res.data.result.image;
-          this.qId = res.data.result._id;
-          this.isLoading = false;
+          if (res.data.result != null) {
+            console.log(res.data);
+            // this.question = res.data.result;
+            this.level = res.data.result.level;
+            this.question = res.data.result.question;
+            this.image = res.data.result.image;
+            this.qId = res.data.result._id;
+            this.isLoading = false;
+          } else {
+            this.$router.replace("/leaderboard");
+          }
         })
         .catch(function (error) {
           console.log(error);
@@ -154,7 +158,7 @@ export default {
           config
         )
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           this.answerComment = res.data.message;
           this.isAnswerCorrect = res.data.result.isAnswerCorrect;
         })
