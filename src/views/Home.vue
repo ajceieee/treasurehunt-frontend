@@ -84,9 +84,6 @@
 </template>
 
 <script>
-// import { ref, onBeforeMount } from "vue";
-// import { useRoute, useRouter } from "vue-router";
-// import NProgress from "nprogress";
 import firebase from "firebase";
 import axios from "axios";
 import Navbar from "../components/Navbar.vue";

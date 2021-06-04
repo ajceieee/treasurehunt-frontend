@@ -8,11 +8,6 @@ const routes = [
     component: Home,
   },
   {
-    path: "/about",
-    name: "About",
-    component: () => import("../views/About.vue"),
-  },
-  {
     path: "/signup",
     name: "Signup",
     component: () => import("../views/Signup.vue"),
@@ -26,6 +21,14 @@ const routes = [
     path: "/leaderboard",
     name: "Leaderboard",
     component: () => import("../views/Leaderboard.vue"),
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: "Home",
+    component: Home,
+    meta: {
+      requiresAuth: false,
+    },
   },
 ];
 
