@@ -16,6 +16,7 @@
               required
               :v-model="displayName"
               @input="displayName = $event.target.value"
+              :readonly="getFullName"
             />
             {{ fullName }}
           </div>
@@ -38,13 +39,18 @@
               id="exampleInputUcode"
               placeholder="Enter Virtual Code"
               required
-              :value="findUid"
+              :value="uCode"
               :v-model="uCode"
+              @input="uCode = $event.target.value"
               :readonly="getUid"
             />
           </div>
 
-          <button type="submit" class="btn btn-success mt-4">
+          <button
+            type="submit"
+            :disabled="btnDisabled"
+            class="btn btn-success mt-4"
+          >
             Submit & Start game
           </button>
         </form>
@@ -77,6 +83,7 @@
 <script>
 // import { ref, onBeforeMount } from "vue";
 // import { useRoute, useRouter } from "vue-router";
+// import NProgress from "nprogress";
 import firebase from "firebase";
 import axios from "axios";
 import Navbar from "../components/Navbar.vue";
@@ -94,8 +101,11 @@ export default {
       uCode: null,
       details: null,
       displayName: null,
-      findUid: null,
       getUid: false,
+      getFullName: false,
+      btnDisabled: false,
+      // uCode: null,
+      // displayName: null,
     };
   },
   created() {
@@ -114,7 +124,6 @@ export default {
       }
     });
   },
-  beforeMount() {},
   methods: {
     async startGame() {
       const userData = {
@@ -146,26 +155,43 @@ export default {
         });
     },
     async checkUser() {
+      // NProgress.start();
       const token = await firebase.auth().currentUser.getIdToken();
       let config = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       };
+
       await axios
+
         .get(
           `https://mighty-island-44038.herokuapp.com/users/${this.uId}`,
           config
         )
         .then((res) => {
-          this.getUid = true;
-          this.findUid = res.data.result[0].uCode;
-          console.log(res);
+          // console.log(res.data.result);
+          if (res.data.result != null) {
+            this.uCode = res.data.result.uCode;
+            this.displayName = res.data.result.fullName;
+            // if (this.uCode == undefined) {
+            // this.getUid = false;
+            // this.getFullName = false;
+            // } else {
+            this.getUid = true;
+            this.getFullName = true;
+            this.btnDisabled = true;
+            this.$router.push("/game");
+            // }
+          }
+
+          // console.log(res);
           // alert("user already exists");
         })
         .catch(function (error) {
           console.log(error);
         });
+      // NProgress.done();
     },
   },
 };
