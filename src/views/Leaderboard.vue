@@ -1,6 +1,12 @@
 <template>
   <navbar />
-  <h1 class="m-5">Leaderboard</h1>
+  <div class="container">
+    <div class="row">
+      <div class="card p-2" style="text-align: center">
+        <h1>Leaderboard</h1>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

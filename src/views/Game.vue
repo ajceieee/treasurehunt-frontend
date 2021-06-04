@@ -79,7 +79,6 @@ export default {
     return {
       user: null,
       highestLevelPlayed: null,
-      // question: null,
       level: null,
       question: null,
       image: null,
@@ -126,8 +125,7 @@ export default {
         )
         .then((res) => {
           if (res.data.result != null) {
-            console.log(res.data);
-            // this.question = res.data.result;
+            // console.log(res.data);
             this.level = res.data.result.level;
             this.question = res.data.result.question;
             this.image = res.data.result.image;
