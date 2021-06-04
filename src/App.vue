@@ -10,6 +10,14 @@ export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
+    // Dark theam if needed
+    // let darkThemeLinkEl = document.createElement("link");
+    // darkThemeLinkEl.setAttribute("rel", "stylesheet");
+    // darkThemeLinkEl.setAttribute("href", "/css/darktheme.css");
+    // darkThemeLinkEl.setAttribute("id", "dark-theme-style");
+
+    // let docHead = document.querySelector("head");
+    // docHead.append(darkThemeLinkEl);
 
     onBeforeMount(() => {
       firebase.auth().onAuthStateChanged((user) => {
