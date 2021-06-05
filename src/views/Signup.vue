@@ -6,9 +6,7 @@
       <!-- <button @click="darkThemeSwitch">Switch Theme</button> -->
     </div>
     <div class="item">
-      <button class="btn btn-primary" @click="googleSignIn">
-        Sign In With Google
-      </button>
+      <button class="btn" @click="googleSignIn">Sign In With Google</button>
     </div>
   </div>
 </template>
@@ -83,6 +81,17 @@ button {
 }
 img {
   width: 80%;
+}
+
+button {
+  background-color: #f59800;
+  color: black !important;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: black;
+  color: #f59800 !important;
 }
 
 .item {
