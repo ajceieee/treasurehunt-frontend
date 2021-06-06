@@ -120,6 +120,7 @@ export default {
       let config = {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "Application/json",
         },
       };
 
@@ -130,8 +131,8 @@ export default {
           config
         )
         .then((res) => {
+          console.log(res.data);
           if (res.data.result != null) {
-            // console.log(res.data);
             this.level = res.data.result.level;
             this.question = res.data.result.question;
             this.image = res.data.result.image;
@@ -139,6 +140,7 @@ export default {
             this.isLoading = false;
           } else {
             this.$router.replace("/leaderboard");
+            console.log("redirect leaderboard");
           }
         })
         .catch(function (error) {
@@ -150,6 +152,7 @@ export default {
       let config = {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "Application/json",
         },
       };
       const answer = { answer: this.answer };

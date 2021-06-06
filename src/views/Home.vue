@@ -1,17 +1,17 @@
 <template>
   <navbar />
-  <div class="m-5 loading" v-if="isLoading">
-    <div class="mx-auto" style="width: 50%; text-align: center">
-      <img
-        src="../../public/minion.gif"
-        alt="Loading..."
-        width="100"
-        height="100"
-      />
-      <p>Loading...</p>
-    </div>
-  </div>
-  <div class="container" v-else>
+  <div class="container">
+    <!-- <div class="m-5 loading" v-if="isLoading">
+      <div class="mx-auto" style="width: 50%; text-align: center">
+        <img
+          src="../../public/minion.gif"
+          alt="Loading..."
+          width="100"
+          height="100"
+        />
+        <p>Loading...</p>
+      </div>
+    </div> -->
     <div class="row">
       <div class="col-12 col-md-6">
         <h4 class="mt-3"><b>Details</b></h4>
@@ -114,28 +114,26 @@ export default {
       user: null,
       fullName: null,
       email: null,
-      // uCode: null,
       details: null,
       displayName: null,
-      // getUid: false,
       getFullName: false,
       btnDisabled: false,
-      isLoading: true,
+      // isLoading: true,
+      // uCode: null,
+      // getUid: false,
       // uCode: null,
       // displayName: null,
     };
   },
   created() {
     firebase.auth().onAuthStateChanged((user) => {
-      // const route = useRoute();
-      // const router = useRouter();
       if (user) {
         this.user = user;
         this.uId = user.uid;
         this.displayName = user.displayName;
         this.email = user.email;
-        // console.log(this.uId);
-        this.checkUser();
+        console.log(this.uId);
+        // this.checkUser();
       } else {
         this.user = null;
       }
@@ -147,7 +145,6 @@ export default {
         uId: this.uId,
         fullName: this.displayName,
         email: this.email,
-        // uCode: this.uCode,
       };
       console.log(userData);
       // console.log(userData);
@@ -172,38 +169,39 @@ export default {
           console.log(error);
         });
     },
-    async checkUser() {
-      // NProgress.start();
-      const token = await firebase.auth().currentUser.getIdToken();
-      let config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
+    // async checkUser() {
+    //   const token = await firebase.auth().currentUser.getIdToken();
+    //   let config = {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   };
 
-      await axios
+    //   await axios
 
-        .get(
-          `https://mighty-island-44038.herokuapp.com/users/${this.uId}`,
-          config
-        )
-        .then((res) => {
-          console.log(res.data);
-          if (res.data.result != null) {
-            // this.uCode = res.data.result.uCode;
-            this.displayName = res.data.result.fullName;
-            // this.getUid = true;
-            this.getFullName = true;
-            this.btnDisabled = true;
-            this.$router.push("/game");
-            this.isLoading = false;
-          }
-          this.isLoading = false;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
+    //     .get(
+    //       `https://mighty-island-44038.herokuapp.com/users/${this.uId}`,
+    //       config
+    //     )
+    //     .then((res) => {
+    //       console.log(res.data.result);
+    //       // if (res.data.result != null) {
+    //       console.log(res.data);
+    //       console.log("null alla");
+    //       // this.uCode = res.data.result.uCode;
+    //       this.displayName = res.data.result.fullName;
+    //       // this.getUid = true;
+    //       this.getFullName = true;
+    //       this.btnDisabled = true;
+    //       this.$router.push("/game");
+    //       // this.isLoading = false;
+    //       // }
+    //       // this.isLoading = false;
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     });
+    // },
   },
 };
 </script>

@@ -19,6 +19,7 @@
 
 <script>
 import firebase from "firebase";
+import axios from "axios";
 
 export default {
   methods: {
@@ -28,10 +29,47 @@ export default {
         .auth()
         .signInWithPopup(provider)
         .then(() => {
+          this.checkUser();
           console.log("signed in!");
         })
         .catch((err) => {
           console.log(err);
+        });
+    },
+    async checkUser() {
+      const token = await firebase.auth().currentUser.getIdToken();
+      let config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "Application/json",
+        },
+      };
+
+      await axios
+
+        .get(
+          `https://mighty-island-44038.herokuapp.com/users/${this.uId}`,
+          config
+        )
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.result != null) {
+            console.log(res.data);
+            console.log("user unteee");
+            // this.uCode = res.data.result.uCode;
+            // this.displayName = res.data.result.fullName;
+            // this.getUid = true;
+            // this.getFullName = true;
+            // this.btnDisabled = true;
+            this.$router.push("/game");
+            // this.isLoading = false;
+          } else {
+            this.$router.push("/");
+          }
+          // this.isLoading = false;
+        })
+        .catch(function (error) {
+          console.log(error);
         });
     },
   },
