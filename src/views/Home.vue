@@ -114,7 +114,6 @@ export default {
         this.displayName = user.displayName;
         this.email = user.email;
         this.checkUser();
-        console.log(this.uId);
       } else {
         this.user = null;
       }
@@ -137,14 +136,11 @@ export default {
           config
         )
         .then((res) => {
-          console.log(res.data);
           if (res.data.result != null) {
-            console.log(res.data);
-            console.log("user unt hmm");
             this.$router.push("/game");
           } else {
             this.isLoading = false;
-            // this.$router.push("/");
+            this.$router.push("/");
           }
         })
         .catch(function (error) {
@@ -171,12 +167,11 @@ export default {
           config
         )
         .then((res) => {
-          if (res.data.result != null) {
-            console.log(res.data);
-            alert("Successfully Registered!");
+          if (res.data.result == null) {
+            alert("User already exist");
             this.$router.push("/game");
           } else {
-            alert("User already exist");
+            alert("Successfully Registered!");
             this.$router.push("/game");
           }
         })
