@@ -1,16 +1,16 @@
 <template>
   <div class="signup container">
-    <div class="item">
+    <div class="item m-3">
       <img src="../../public/QuaRunTime.png" alt="icon" />
     </div>
-    <div class="item">
+    <div class="item m-3">
       <img src="../../public/TREASUREHUNT.png" alt="icon" />
     </div>
-    <div class="item minion">
+    <div class="item minion m-3">
       <img src="../../public/Minion.png" alt="icon" />
     </div>
     <div class="item">
-      <button class="btn mt-2" @click="googleSignIn">
+      <button class="btn mt-3" @click="googleSignIn">
         Sign In With Google
       </button>
     </div>
@@ -119,5 +119,11 @@ button:hover {
 
 .minion {
   width: 40% !important;
+}
+
+@media (min-width: 840px) {
+  img {
+    width: 50%;
+  }
 }
 </style>
