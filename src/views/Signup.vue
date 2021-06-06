@@ -1,18 +1,31 @@
 <template>
-  <div class="signup container">
-    <div class="item m-3">
-      <img src="../../public/QuaRunTime.png" alt="icon" />
+  <div class="signup">
+    <div class="m-5 loading" v-if="isLoading">
+      <div class="mx-auto" style="width: 50%; text-align: center">
+        <img
+          src="../../public/minion.gif"
+          alt="Loading..."
+          width="100"
+          height="100"
+        />
+        <p>Loading...</p>
+      </div>
     </div>
-    <div class="item m-3">
-      <img src="../../public/TREASUREHUNT.png" alt="icon" />
-    </div>
-    <div class="item minion m-3">
-      <img src="../../public/Minion.png" alt="icon" />
-    </div>
-    <div class="item">
-      <button class="btn mt-3" @click="googleSignIn">
-        Sign In With Google
-      </button>
+    <div class="container" v-else>
+      <div class="item m-3">
+        <img src="../../public/QuaRunTime.png" alt="icon" />
+      </div>
+      <div class="item m-3">
+        <img src="../../public/TREASUREHUNT.png" alt="icon" />
+      </div>
+      <div class="item minion m-3">
+        <img src="../../public/Minion.png" alt="icon" />
+      </div>
+      <div class="item">
+        <button class="btn mt-3" @click="googleSignIn">
+          Sign In With Google
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +38,7 @@ export default {
   data() {
     return {
       uId: null,
+      isLoading: false,
     };
   },
   methods: {
@@ -32,12 +46,14 @@ export default {
       const provider = new firebase.auth.GoogleAuthProvider();
       await firebase
         .auth()
-        .signInWithPopup(provider)
+        .signInWithRedirect(provider)
         .then((res) => {
+          // this.isLoading = true;
           console.log(res.user.uid);
           this.uId = res.user.uid;
           this.checkUser();
           console.log("signed in!");
+          this.isLoading = true;
         })
         .catch((err) => {
           console.log(err);
