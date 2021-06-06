@@ -1,7 +1,7 @@
 <template>
   <navbar />
   <div class="container">
-    <!-- <div class="m-5 loading" v-if="isLoading">
+    <div class="m-5 loading" v-if="isLoading">
       <div class="mx-auto" style="width: 50%; text-align: center">
         <img
           src="../../public/minion.gif"
@@ -11,8 +11,8 @@
         />
         <p>Loading...</p>
       </div>
-    </div> -->
-    <div class="row">
+    </div>
+    <div class="row" v-else>
       <div class="col-12 col-md-6">
         <h4 class="mt-3"><b>Details</b></h4>
         <form class="mt-3" @submit.prevent="startGame">
@@ -103,7 +103,7 @@ export default {
       displayName: null,
       getFullName: false,
       btnDisabled: false,
-      // isLoading: true,
+      isLoading: true,
     };
   },
   created() {
@@ -113,6 +113,7 @@ export default {
         this.uId = user.uid;
         this.displayName = user.displayName;
         this.email = user.email;
+        this.checkUser();
         console.log(this.uId);
       } else {
         this.user = null;
@@ -120,6 +121,36 @@ export default {
     });
   },
   methods: {
+    async checkUser() {
+      const token = await firebase.auth().currentUser.getIdToken();
+      let config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "Application/json",
+        },
+      };
+
+      await axios
+
+        .get(
+          `https://mighty-island-44038.herokuapp.com/users/${this.uId}`,
+          config
+        )
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.result != null) {
+            console.log(res.data);
+            console.log("user unt hmm");
+            this.$router.push("/game");
+          } else {
+            this.isLoading = false;
+            // this.$router.push("/");
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
     async startGame() {
       const userData = {
         uId: this.uId,
@@ -140,9 +171,14 @@ export default {
           config
         )
         .then((res) => {
-          console.log(res.data);
-          alert("Successfully Registered!");
-          this.$router.push("/game");
+          if (res.data.result != null) {
+            console.log(res.data);
+            alert("Successfully Registered!");
+            this.$router.push("/game");
+          } else {
+            alert("User already exist");
+            this.$router.push("/game");
+          }
         })
         .catch(function (error) {
           console.log(error);

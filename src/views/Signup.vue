@@ -6,7 +6,7 @@
     <div class="item">
       <img src="../../public/TREASUREHUNT.png" alt="icon" />
     </div>
-    <div class="item">
+    <div class="item minion">
       <img src="../../public/Minion.png" alt="icon" />
     </div>
     <div class="item">
@@ -115,5 +115,9 @@ button:hover {
 
 .item {
   align-self: center;
+}
+
+.minion {
+  width: 40% !important;
 }
 </style>

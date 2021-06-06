@@ -93,6 +93,7 @@ export default {
       qId: null,
       isAnswerCorrect: null,
       answerComment: null,
+      isQuestionFount: null,
     };
   },
   created() {
@@ -132,15 +133,20 @@ export default {
         )
         .then((res) => {
           console.log(res.data);
-          if (res.data.result != null) {
-            this.level = res.data.result.level;
-            this.question = res.data.result.question;
-            this.image = res.data.result.image;
-            this.qId = res.data.result._id;
+          if (res.data.result.isQuestionFount) {
+            this.isQuestionFount = res.data.result.isQuestionFount;
+            this.level = res.data.result.result.level;
+            this.question = res.data.result.result.question;
+            this.image = res.data.result.result.image;
+            this.qId = res.data.result.result._id;
             this.isLoading = false;
-          } else {
+          } else if (!res.data.result.isQuestionFount) {
+            // this.isLoading = false;
             this.$router.replace("/leaderboard");
             console.log("redirect leaderboard");
+          } else {
+            // this.isLoading = false;
+            this.$router.replace("/");
           }
         })
         .catch(function (error) {

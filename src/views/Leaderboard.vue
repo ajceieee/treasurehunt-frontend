@@ -3,7 +3,10 @@
   <div class="container">
     <div class="row">
       <div class="card p-2" style="text-align: center">
-        <h1>Leaderboard</h1>
+        <h1>
+          😁 Ivide entho unt 😁 <br />
+          🚧 under construction 🚧
+        </h1>
       </div>
     </div>
   </div>

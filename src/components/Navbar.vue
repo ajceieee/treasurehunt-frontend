@@ -8,14 +8,19 @@
 
 <script>
 import firebase from "firebase";
+import { useRouter } from "vue-router";
 export default {
   name: "navbar",
   setup() {
+    const router = useRouter();
     const Logout = () => {
       firebase
         .auth()
         .signOut()
-        .then(console.log("Signed Out"))
+        .then(() => {
+          router.replace("/signup");
+          console.log("Signed Out");
+        })
         .catch((err) => alert(err.message));
     };
     return {
