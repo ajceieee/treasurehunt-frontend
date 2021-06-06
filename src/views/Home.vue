@@ -1,14 +1,14 @@
 <template>
   <navbar />
-  <div class="m-5" v-if="isLoading">
+  <div class="m-5 loading" v-if="isLoading">
     <div class="mx-auto" style="width: 50%; text-align: center">
-      <p>Loading...</p>
       <img
         src="../../public/minion.gif"
         alt="Loading..."
         width="100"
         height="100"
       />
+      <p>Loading...</p>
     </div>
   </div>
   <div class="container" v-else>
