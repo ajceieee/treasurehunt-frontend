@@ -149,6 +149,7 @@ export default {
         email: this.email,
         // uCode: this.uCode,
       };
+      console.log(userData);
       // console.log(userData);
       const token = await firebase.auth().currentUser.getIdToken();
       let config = {
