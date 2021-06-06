@@ -42,21 +42,6 @@
               :v-model="email"
             />
           </div>
-          <!-- <div hidden class="form-group mt-4">
-            <label for="exampleInputUcode">Virtual Code</label>
-            <input
-              type="uCode"
-              class="form-control"
-              id="exampleInputUcode"
-              placeholder="Enter Virtual Code"
-              required
-              :value="uCode"
-              :v-model="uCode"
-              @input="uCode = $event.target.value"
-              :disabled="getUid"
-            />
-          </div> -->
-
           <button
             type="submit"
             :disabled="btnDisabled"
@@ -119,10 +104,6 @@ export default {
       getFullName: false,
       btnDisabled: false,
       // isLoading: true,
-      // uCode: null,
-      // getUid: false,
-      // uCode: null,
-      // displayName: null,
     };
   },
   created() {
@@ -133,7 +114,6 @@ export default {
         this.displayName = user.displayName;
         this.email = user.email;
         console.log(this.uId);
-        // this.checkUser();
       } else {
         this.user = null;
       }
@@ -147,7 +127,6 @@ export default {
         email: this.email,
       };
       console.log(userData);
-      // console.log(userData);
       const token = await firebase.auth().currentUser.getIdToken();
       let config = {
         headers: {
@@ -169,39 +148,6 @@ export default {
           console.log(error);
         });
     },
-    // async checkUser() {
-    //   const token = await firebase.auth().currentUser.getIdToken();
-    //   let config = {
-    //     headers: {
-    //       Authorization: `Bearer ${token}`,
-    //     },
-    //   };
-
-    //   await axios
-
-    //     .get(
-    //       `https://mighty-island-44038.herokuapp.com/users/${this.uId}`,
-    //       config
-    //     )
-    //     .then((res) => {
-    //       console.log(res.data.result);
-    //       // if (res.data.result != null) {
-    //       console.log(res.data);
-    //       console.log("null alla");
-    //       // this.uCode = res.data.result.uCode;
-    //       this.displayName = res.data.result.fullName;
-    //       // this.getUid = true;
-    //       this.getFullName = true;
-    //       this.btnDisabled = true;
-    //       this.$router.push("/game");
-    //       // this.isLoading = false;
-    //       // }
-    //       // this.isLoading = false;
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     });
-    // },
   },
 };
 </script>

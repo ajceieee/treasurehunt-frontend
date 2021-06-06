@@ -22,13 +22,20 @@ import firebase from "firebase";
 import axios from "axios";
 
 export default {
+  data() {
+    return {
+      uId: null,
+    };
+  },
   methods: {
-    googleSignIn() {
+    async googleSignIn() {
       const provider = new firebase.auth.GoogleAuthProvider();
-      firebase
+      await firebase
         .auth()
         .signInWithPopup(provider)
-        .then(() => {
+        .then((res) => {
+          console.log(res.user.uid);
+          this.uId = res.user.uid;
           this.checkUser();
           console.log("signed in!");
         })
@@ -56,17 +63,10 @@ export default {
           if (res.data.result != null) {
             console.log(res.data);
             console.log("user unteee");
-            // this.uCode = res.data.result.uCode;
-            // this.displayName = res.data.result.fullName;
-            // this.getUid = true;
-            // this.getFullName = true;
-            // this.btnDisabled = true;
             this.$router.push("/game");
-            // this.isLoading = false;
           } else {
             this.$router.push("/");
           }
-          // this.isLoading = false;
         })
         .catch(function (error) {
           console.log(error);
