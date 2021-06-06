@@ -117,7 +117,7 @@ export default {
       // uCode: null,
       details: null,
       displayName: null,
-      getUid: false,
+      // getUid: false,
       getFullName: false,
       btnDisabled: false,
       isLoading: true,
@@ -191,7 +191,7 @@ export default {
           if (res.data.result != null) {
             // this.uCode = res.data.result.uCode;
             this.displayName = res.data.result.fullName;
-            this.getUid = true;
+            // this.getUid = true;
             this.getFullName = true;
             this.btnDisabled = true;
             this.$router.push("/game");
