@@ -1,7 +1,15 @@
 <template>
   <navbar />
   <div class="m-5" v-if="isLoading">
-    <div class="mx-auto" style="width: 50%; text-align: center">Loading...</div>
+    <div class="mx-auto" style="width: 50%; text-align: center">
+      <p>Loading...</p>
+      <img
+        src="../../public/minion.gif"
+        alt="Loading..."
+        width="100"
+        height="100"
+      />
+    </div>
   </div>
   <div class="container" v-else>
     <div class="row">
@@ -19,7 +27,7 @@
               required
               :v-model="displayName"
               @input="displayName = $event.target.value"
-              :readonly="getFullName"
+              :disabled="getFullName"
             />
             {{ fullName }}
           </div>
@@ -29,12 +37,12 @@
               type="email"
               class="form-control"
               id="exampleInputEmail"
-              readonly
+              disabled
               :value="email"
               :v-model="email"
             />
           </div>
-          <div class="form-group mt-4">
+          <!-- <div hidden class="form-group mt-4">
             <label for="exampleInputUcode">Virtual Code</label>
             <input
               type="uCode"
@@ -45,9 +53,9 @@
               :value="uCode"
               :v-model="uCode"
               @input="uCode = $event.target.value"
-              :readonly="getUid"
+              :disabled="getUid"
             />
-          </div>
+          </div> -->
 
           <button
             type="submit"
@@ -60,23 +68,31 @@
       </div>
       <div class="col-12 col-md-6">
         <h4 class="mt-3"><b>Rules</b></h4>
-        <div class="card">
-          1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          minima soluta temporibus? Iste culpa minus iure corporis quibusdam.
-          Mollitia suscipit nesciunt error rerum, quidem accusantium iure fugiat
-          voluptates earum dolorum! <br /><br />
-          2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          minima soluta temporibus? Iste culpa minus iure corporis quibusdam.
-          Mollitia suscipit nesciunt error rerum, quidem accusantium iure fugiat
-          voluptates earum dolorum! <br /><br />
-          3. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          minima soluta temporibus? Iste culpa minus iure corporis quibusdam.
-          Mollitia suscipit nesciunt error rerum, quidem accusantium iure fugiat
-          voluptates earum dolorum! <br /><br />
-          4. Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          minima soluta temporibus? Iste culpa minus iure corporis quibusdam.
-          Mollitia suscipit nesciunt error rerum, quidem accusantium iure fugiat
-          voluptates earum dolorum!
+        <div class="card p-5">
+          <p>
+            1. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Accusamus minima soluta temporibus? Iste culpa minus iure corporis
+            quibusdam. Mollitia suscipit nesciunt error rerum, quidem
+            accusantium iure fugiat voluptates earum dolorum! <br /><br />
+          </p>
+          <p>
+            2. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Accusamus minima soluta temporibus? Iste culpa minus iure corporis
+            quibusdam. Mollitia suscipit nesciunt error rerum, quidem
+            accusantium iure fugiat voluptates earum dolorum! <br /><br />
+          </p>
+          <p>
+            3. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Accusamus minima soluta temporibus? Iste culpa minus iure corporis
+            quibusdam. Mollitia suscipit nesciunt error rerum, quidem
+            accusantium iure fugiat voluptates earum dolorum! <br /><br />
+          </p>
+          <p>
+            4. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Accusamus minima soluta temporibus? Iste culpa minus iure corporis
+            quibusdam. Mollitia suscipit nesciunt error rerum, quidem
+            accusantium iure fugiat voluptates earum dolorum!
+          </p>
         </div>
       </div>
     </div>
@@ -98,7 +114,7 @@ export default {
       user: null,
       fullName: null,
       email: null,
-      uCode: null,
+      // uCode: null,
       details: null,
       displayName: null,
       getUid: false,
@@ -131,7 +147,7 @@ export default {
         uId: this.uId,
         fullName: this.displayName,
         email: this.email,
-        uCode: this.uCode,
+        // uCode: this.uCode,
       };
       // console.log(userData);
       const token = await firebase.auth().currentUser.getIdToken();
@@ -173,7 +189,7 @@ export default {
         .then((res) => {
           console.log(res.data);
           if (res.data.result != null) {
-            this.uCode = res.data.result.uCode;
+            // this.uCode = res.data.result.uCode;
             this.displayName = res.data.result.fullName;
             this.getUid = true;
             this.getFullName = true;

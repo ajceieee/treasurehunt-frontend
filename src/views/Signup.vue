@@ -1,12 +1,18 @@
 <template>
   <div class="signup container">
     <div class="item">
-      <!-- <h1>QuaRunTime 2.0</h1> -->
-      <img src="../../public/icon.png" alt="icon" />
-      <!-- <button @click="darkThemeSwitch">Switch Theme</button> -->
+      <img src="../../public/QuaRunTime.png" alt="icon" />
     </div>
     <div class="item">
-      <button class="btn" @click="googleSignIn">Sign In With Google</button>
+      <img src="../../public/TREASUREHUNT.png" alt="icon" />
+    </div>
+    <div class="item">
+      <img src="../../public/Minion.png" alt="icon" />
+    </div>
+    <div class="item">
+      <button class="btn mt-2" @click="googleSignIn">
+        Sign In With Google
+      </button>
     </div>
   </div>
 </template>
@@ -15,9 +21,6 @@
 import firebase from "firebase";
 
 export default {
-  mounted() {
-    this._addDarkTheme();
-  },
   methods: {
     googleSignIn() {
       const provider = new firebase.auth.GoogleAuthProvider();
@@ -30,28 +33,6 @@ export default {
         .catch((err) => {
           console.log(err);
         });
-    },
-    _addDarkTheme() {
-      let darkThemeLinkEl = document.createElement("link");
-      darkThemeLinkEl.setAttribute("rel", "stylesheet");
-      darkThemeLinkEl.setAttribute("href", "/styles.css");
-      darkThemeLinkEl.setAttribute("id", "dark-theme-style");
-
-      let docHead = document.querySelector("head");
-      docHead.append(darkThemeLinkEl);
-    },
-    _removeDarkTheme() {
-      let darkThemeLinkEl = document.querySelector("#dark-theme-style");
-      let parentNode = darkThemeLinkEl.parentNode;
-      parentNode.removeChild(darkThemeLinkEl);
-    },
-    darkThemeSwitch() {
-      let darkThemeLinkEl = document.querySelector("#dark-theme-style");
-      if (!darkThemeLinkEl) {
-        this._addDarkTheme();
-      } else {
-        this._removeDarkTheme();
-      }
     },
   },
 };
@@ -67,7 +48,7 @@ export default {
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: 700px;
+  height: 600px;
   justify-content: center;
   align-items: center;
   align-content: center;

@@ -1,17 +1,23 @@
 <template>
   <navbar />
   <div class="container">
-    <div class="m-5" v-if="isLoading">
+    <div class="m-5 loading" v-if="isLoading">
       <div class="mx-auto" style="width: 50%; text-align: center">
-        Loading...
+        <img
+          src="../../public/minion.gif"
+          alt="Loading..."
+          width="100"
+          height="100"
+        />
+        <p>Loading...</p>
       </div>
     </div>
     <div class="row" v-else>
       <div class="col col-lg-6 mx-auto m-5">
-        <div class="card">
-          <h3>
+        <div class="card p-3">
+          <h3 class="pb-3">
             <b
-              ><i>#{{ level }}</i></b
+              ><i>Level {{ level }}</i></b
             >
           </h3>
           <img
@@ -46,7 +52,7 @@
                     'invalid-feedback': !isAnswerCorrect,
                   }"
                 >
-                  {{ answerComment }}
+                  <b>{{ answerComment }}</b>
                 </div>
               </div>
               <button
@@ -168,4 +174,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+h3 {
+  text-align: center;
+}
+</style>
