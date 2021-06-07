@@ -61,7 +61,14 @@
                 class="btn mb-2"
                 style="background-color: #f59800"
               >
-                Verify Answer
+                <span
+                  v-if="spinning"
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+                <span v-if="spinning" class="sr-only">&nbsp; Verifying...</span>
+                <span v-else class="sr-only">Verify Answer</span>
               </button>
               <button v-else @click="checkLevel" class="btn btn-success mb-2">
                 Play Next Level
@@ -95,6 +102,7 @@ export default {
       isAnswerCorrect: null,
       answerComment: null,
       isQuestionFount: null,
+      spinning: null,
     };
   },
   created() {
@@ -109,6 +117,7 @@ export default {
   },
   methods: {
     async checkLevel() {
+      this.isLoading = true;
       this.answerComment = null;
       this.isAnswerCorrect = null;
       this.qId = null;
@@ -117,7 +126,6 @@ export default {
       this.question = null;
       this.level = null;
       this.highestLevelPlayed = null;
-      this.isLoading = true;
       const token = await firebase.auth().currentUser.getIdToken();
       let config = {
         headers: {
@@ -155,6 +163,7 @@ export default {
         });
     },
     async verifyAnswer() {
+      this.spinning = true;
       const token = await firebase.auth().currentUser.getIdToken();
       let config = {
         headers: {
@@ -172,6 +181,7 @@ export default {
           config
         )
         .then((res) => {
+          this.spinning = false;
           // console.log(res.data);
           this.answerComment = res.data.message;
           this.isAnswerCorrect = res.data.result.isAnswerCorrect;

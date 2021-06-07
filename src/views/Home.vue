@@ -54,7 +54,7 @@
               aria-hidden="true"
             ></span>
 
-            <span v-if="spinning" class="sr-only">Loading...</span>
+            <span v-if="spinning" class="sr-only">&nbsp; Loading...</span>
             <span v-else class="sr-only">Submit & Start game</span>
           </button>
         </form>
