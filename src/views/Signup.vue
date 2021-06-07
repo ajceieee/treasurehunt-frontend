@@ -23,7 +23,15 @@
       </div>
       <div class="item">
         <button class="btn mt-3" @click="googleSignIn">
-          Sign In With Google
+          <span
+            v-if="spinning"
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+          ></span>
+
+          <span v-if="spinning" class="sr-only">Loading...</span>
+          <span v-else class="sr-only">Sign In With Google</span>
         </button>
       </div>
     </div>
@@ -39,6 +47,7 @@ export default {
     return {
       uId: null,
       isLoading: false,
+      spinning: false,
     };
   },
   methods: {
@@ -53,6 +62,7 @@ export default {
           this.uId = res.user.uid;
           this.checkUser();
           console.log("signed in!");
+          this.spinning = true;
           this.isLoading = true;
         })
         .catch((err) => {

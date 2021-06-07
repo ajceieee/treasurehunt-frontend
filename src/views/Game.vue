@@ -58,7 +58,8 @@
               <button
                 v-if="!isAnswerCorrect"
                 type="submit"
-                class="btn btn-primary mb-2"
+                class="btn mb-2"
+                style="background-color: #f59800"
               >
                 Verify Answer
               </button>

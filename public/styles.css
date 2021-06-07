@@ -20,12 +20,6 @@ input {
   border-radius: 10px;
 }
 
-input:focus {
-  border-color: #f59800 !important;
-  border-block-start-color: #f59800 !important;
-  /* background-color: #003f5a !important; */
-}
-
 .loading {
   text-align: center;
   display: flex;

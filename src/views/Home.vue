@@ -47,7 +47,15 @@
             :disabled="btnDisabled"
             class="btn btn-success mt-4"
           >
-            Submit & Start game
+            <span
+              v-if="spinning"
+              class="spinner-border spinner-border-sm"
+              role="status"
+              aria-hidden="true"
+            ></span>
+
+            <span v-if="spinning" class="sr-only">Loading...</span>
+            <span v-else class="sr-only">Submit & Start game</span>
           </button>
         </form>
       </div>
@@ -104,6 +112,7 @@ export default {
       getFullName: false,
       btnDisabled: false,
       isLoading: true,
+      spinning: false,
     };
   },
   created() {
@@ -148,6 +157,7 @@ export default {
         });
     },
     async startGame() {
+      this.spinning = true;
       const userData = {
         uId: this.uId,
         fullName: this.displayName,
