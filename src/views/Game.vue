@@ -180,6 +180,9 @@ export default {
           this.spinning = false;
           this.answerComment = res.data.message;
           this.isAnswerCorrect = res.data.result.isAnswerCorrect;
+          if (!this.isAnswerCorrect) {
+            this.answer = "";
+          }
         })
         .catch(function (error) {
           console.log(error);
