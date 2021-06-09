@@ -17,28 +17,12 @@
 </template>
 
 <script>
-// import firebase from "firebase";
 import Navbar from "../components/Navbar.vue";
 
 export default {
   components: {
     Navbar,
   },
-  // data() {
-  //   return {
-  //     isLoading: false,
-  //   };
-  // },
-  // created() {
-  //   firebase
-  //     .auth()
-  //     .signOut()
-  //     .then(() => {
-  //       window.location.href = "https://quaruntime.web.app";
-  //       console.log("Signed Out");
-  //     })
-  //     .catch((err) => alert(err.message));
-  // },
 };
 </script>
 
@@ -49,7 +33,6 @@ export default {
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   display: flex;
   flex-direction: column;
   height: 600px;

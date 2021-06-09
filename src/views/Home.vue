@@ -163,7 +163,6 @@ export default {
         fullName: this.displayName,
         email: this.email,
       };
-      console.log(userData);
       const token = await firebase.auth().currentUser.getIdToken();
       let config = {
         headers: {

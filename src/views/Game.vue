@@ -141,7 +141,6 @@ export default {
           config
         )
         .then((res) => {
-          console.log(res.data);
           if (res.data.result.isQuestionFount) {
             this.isQuestionFount = res.data.result.isQuestionFount;
             this.level = res.data.result.result.level;
@@ -150,11 +149,8 @@ export default {
             this.qId = res.data.result.result._id;
             this.isLoading = false;
           } else if (!res.data.result.isQuestionFount) {
-            // this.isLoading = false;
             this.$router.replace("/final");
-            // console.log("redirect leaderboard");
           } else {
-            // this.isLoading = false;
             this.$router.replace("/");
           }
         })
@@ -182,7 +178,6 @@ export default {
         )
         .then((res) => {
           this.spinning = false;
-          // console.log(res.data);
           this.answerComment = res.data.message;
           this.isAnswerCorrect = res.data.result.isAnswerCorrect;
         })

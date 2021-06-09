@@ -57,8 +57,6 @@ export default {
         .auth()
         .signInWithRedirect(provider)
         .then((res) => {
-          // this.isLoading = true;
-          console.log(res.user.uid);
           this.uId = res.user.uid;
           this.checkUser();
           console.log("signed in!");
@@ -85,10 +83,7 @@ export default {
           config
         )
         .then((res) => {
-          console.log(res.data);
           if (res.data.result != null) {
-            console.log(res.data);
-            console.log("user unteee");
             this.$router.push("/game");
           } else {
             this.$router.push("/");
