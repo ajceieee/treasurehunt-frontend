@@ -1,17 +1,6 @@
 <template>
   <div class="signup">
-    <div class="m-5 loading" v-if="isLoading">
-      <div class="mx-auto" style="width: 50%; text-align: center">
-        <img
-          src="../../public/minion.gif"
-          alt="Loading..."
-          width="100"
-          height="100"
-        />
-        <p>Loading...</p>
-      </div>
-    </div>
-    <div class="container" v-else>
+    <div class="container">
       <div class="item m-3">
         <img src="../../public/QuaRunTime.png" alt="icon" />
       </div>
@@ -46,7 +35,6 @@ export default {
   data() {
     return {
       uId: null,
-      isLoading: false,
       spinning: false,
       user: null,
       disabled: false,
@@ -74,7 +62,6 @@ export default {
         });
     },
     async checkUser() {
-      // this.spinning = true;
       const token = await firebase.auth().currentUser.getIdToken();
       let config = {
         headers: {

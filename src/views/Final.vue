@@ -1,6 +1,17 @@
 <template>
   <navbar />
-  <div class="container">
+  <div class="m-5 loading" v-if="isLoading">
+    <div class="mx-auto" style="width: 50%; text-align: center">
+      <img
+        src="../../public/minion.gif"
+        alt="Loading..."
+        width="100"
+        height="100"
+      />
+      <p>Loading...</p>
+    </div>
+  </div>
+  <div class="container" v-else>
     <div class="content">
       <img src="../../public/Minion.png" alt="minion" width="150" />
     </div>
@@ -22,6 +33,14 @@ import Navbar from "../components/Navbar.vue";
 export default {
   components: {
     Navbar,
+  },
+  data() {
+    return {
+      isLoading: true,
+    };
+  },
+  mounted() {
+    setTimeout(() => (this.isLoading = false), 1000);
   },
 };
 </script>

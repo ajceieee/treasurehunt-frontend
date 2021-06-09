@@ -1,18 +1,18 @@
 <template>
   <navbar />
-  <div class="container">
-    <div class="m-5 loading" v-if="isLoading">
-      <div class="mx-auto" style="width: 50%; text-align: center">
-        <img
-          src="../../public/minion.gif"
-          alt="Loading..."
-          width="100"
-          height="100"
-        />
-        <p>Loading...</p>
-      </div>
+  <div class="m-5 loading" v-if="isLoading">
+    <div class="mx-auto" style="width: 50%; text-align: center">
+      <img
+        src="../../public/minion.gif"
+        alt="Loading..."
+        width="100"
+        height="100"
+      />
+      <p>Loading...</p>
     </div>
-    <div class="row" v-else>
+  </div>
+  <div class="container" v-else>
+    <div class="row">
       <div class="col-12 col-md-6">
         <h4 class="mt-3"><b>Details</b></h4>
         <form class="mt-3" @submit.prevent="startGame">
@@ -163,6 +163,7 @@ export default {
         fullName: this.displayName,
         email: this.email,
       };
+      console.log(userData);
       const token = await firebase.auth().currentUser.getIdToken();
       let config = {
         headers: {
