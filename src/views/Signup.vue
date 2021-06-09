@@ -22,7 +22,7 @@
         <img src="../../public/Minion.png" alt="icon" />
       </div>
       <div class="item">
-        <button class="btn mt-3" @click="googleSignIn">
+        <button class="btn mt-3" :disabled="disabled" @click="googleSignIn">
           <span
             v-if="spinning"
             class="spinner-border spinner-border-sm"
@@ -30,7 +30,7 @@
             aria-hidden="true"
           ></span>
 
-          <span v-if="spinning" class="sr-only">Loading...</span>
+          <span v-if="spinning" class="sr-only">&nbsp; Loading...</span>
           <span v-else class="sr-only">Sign In With Google</span>
         </button>
       </div>
@@ -48,26 +48,33 @@ export default {
       uId: null,
       isLoading: false,
       spinning: false,
+      user: null,
+      disabled: false,
     };
   },
   methods: {
     async googleSignIn() {
+      this.spinning = true;
+      this.disabled = true;
       const provider = new firebase.auth.GoogleAuthProvider();
       await firebase
         .auth()
-        .signInWithRedirect(provider)
+        .signInWithPopup(provider)
         .then((res) => {
+          this.user = res.user;
           this.uId = res.user.uid;
+          this.spinning = true;
           this.checkUser();
           console.log("signed in!");
-          this.spinning = true;
-          this.isLoading = true;
         })
         .catch((err) => {
+          this.spinning = false;
+          this.disabled = false;
           console.log(err);
         });
     },
     async checkUser() {
+      // this.spinning = true;
       const token = await firebase.auth().currentUser.getIdToken();
       let config = {
         headers: {
@@ -83,6 +90,8 @@ export default {
           config
         )
         .then((res) => {
+          this.spinning = false;
+          this.disabled = false;
           if (res.data.result != null) {
             this.$router.push("/game");
           } else {
