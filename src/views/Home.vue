@@ -13,10 +13,10 @@
   </div>
   <div class="container" v-else>
     <div class="row">
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 mt-4">
         <h4 class="mt-3"><b>Details</b></h4>
-        <form class="mt-3" @submit.prevent="startGame">
-          <div class="form-group mt-4">
+        <form class="mt-4" @submit.prevent="startGame">
+          <div class="form-group">
             <label for="exampleInputFullName">Full Name</label>
             <input
               type="fullName"
@@ -55,13 +55,13 @@
             ></span>
 
             <span v-if="spinning" class="sr-only">&nbsp; Loading...</span>
-            <span v-else class="sr-only">Submit & Start game</span>
+            <span v-else class="sr-only">Submit & Start Game</span>
           </button>
         </form>
       </div>
-      <div class="col-12 col-md-6">
+      <div class="col-12 col-md-6 mt-4">
         <h4 class="mt-3"><b>Rules</b></h4>
-        <div class="card p-5">
+        <div class="card p-5 mb-3 mt-4">
           <p>
             1. Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Accusamus minima soluta temporibus? Iste culpa minus iure corporis
