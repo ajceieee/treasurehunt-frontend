@@ -18,9 +18,9 @@ const routes = [
     component: () => import("../views/Game.vue"),
   },
   {
-    path: "/leaderboard",
-    name: "Leaderboard",
-    component: () => import("../views/Leaderboard.vue"),
+    path: "/final",
+    name: "Final",
+    component: () => import("../views/Final.vue"),
   },
   {
     path: "/:catchAll(.*)",

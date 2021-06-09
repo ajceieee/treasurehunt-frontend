@@ -151,8 +151,8 @@ export default {
             this.isLoading = false;
           } else if (!res.data.result.isQuestionFount) {
             // this.isLoading = false;
-            this.$router.replace("/leaderboard");
-            console.log("redirect leaderboard");
+            this.$router.replace("/final");
+            // console.log("redirect leaderboard");
           } else {
             // this.isLoading = false;
             this.$router.replace("/");
