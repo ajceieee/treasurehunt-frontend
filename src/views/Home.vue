@@ -62,30 +62,53 @@
       <div class="col-12 col-md-6 mt-4">
         <h4 class="mt-3"><b>Rules</b></h4>
         <div class="card p-5 mb-3 mt-4">
-          <p>
-            1. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Accusamus minima soluta temporibus? Iste culpa minus iure corporis
-            quibusdam. Mollitia suscipit nesciunt error rerum, quidem
-            accusantium iure fugiat voluptates earum dolorum! <br /><br />
-          </p>
-          <p>
-            2. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Accusamus minima soluta temporibus? Iste culpa minus iure corporis
-            quibusdam. Mollitia suscipit nesciunt error rerum, quidem
-            accusantium iure fugiat voluptates earum dolorum! <br /><br />
-          </p>
-          <p>
-            3. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Accusamus minima soluta temporibus? Iste culpa minus iure corporis
-            quibusdam. Mollitia suscipit nesciunt error rerum, quidem
-            accusantium iure fugiat voluptates earum dolorum! <br /><br />
-          </p>
-          <p>
-            4. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Accusamus minima soluta temporibus? Iste culpa minus iure corporis
-            quibusdam. Mollitia suscipit nesciunt error rerum, quidem
-            accusantium iure fugiat voluptates earum dolorum!
-          </p>
+          <ul>
+            <li>Please login using your registered mail ID.</li>
+            <br />
+            <li>The treasure hunt starts at 10am till 8pm.</li>
+            <br />
+            <li>
+              The one who solves the last clue first, will be the winner of the
+              treasure hunt. He/she may also have to explain the solving of the
+              rest of the clues later.
+            </li>
+            <br />
+            <li>
+              If more than one person solves the final answer, then the winner
+              will be the one who solves the answer first.
+            </li>
+            <br />
+            <li>
+              If no one solves the entire treasure hunt, the current progress of
+              each participant will be considered for evaluation.
+            </li>
+            <br />
+            <li>
+              All answers must be in small letters with no space or special
+              characters. <br />
+              For example: If the answer is Narendra Modi, type in narendramodi.
+            </li>
+            <br />
+            <li>
+              Enter the full name of any person. <br />
+              For example: If the answer is Neil Alden Armstrong, type in
+              neilaldenarmstrong.
+            </li>
+            <br />
+            <li>
+              Enter the full name of any organization/product. <br />
+              For example: If the answer is Meet, type in googlemeet.
+            </li>
+            <br />
+            <li>
+              Hints for every level will be posted on the Official Instagram
+              Page at every half n hour intervals starting at 10.30am.
+            </li>
+            <br />
+            <li>
+              The decision of the organizing committee is final and binding.
+            </li>
+          </ul>
         </div>
       </div>
     </div>
