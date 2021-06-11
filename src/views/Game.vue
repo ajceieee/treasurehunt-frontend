@@ -23,7 +23,7 @@
           <img
             :src="image"
             class="mx-auto"
-            style="width: 60%"
+            style="width: 100%"
             :alt="`#${level}`"
           />
           <div class="card-body">
