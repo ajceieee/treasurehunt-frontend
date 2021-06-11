@@ -61,7 +61,7 @@
       </div>
       <div class="col-12 col-md-6 mt-4">
         <h4 class="mt-3"><b>Rules</b></h4>
-        <div class="card p-5 mb-3 mt-4">
+        <div class="card py-5 px-2 mb-3 mt-4">
           <ul>
             <li>Please login using your registered mail ID.</li>
             <br />
