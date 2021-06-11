@@ -14,7 +14,7 @@ module.exports = {
     msTileColor: "#003044",
     name: "Treasure Hunt - QuaRunTime 2.0",
     iconPaths: {
-      msTileImage: "./public/icon.png",
+      msTileImage: "img/icons/mstile-150x150.png",
     },
     manifestOptions: {
       background_color: "#003044",
