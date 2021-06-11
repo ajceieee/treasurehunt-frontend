@@ -10,8 +10,8 @@ module.exports = {
 module.exports = {
   // ...other vue-cli plugin options...
   pwa: {
-    themeColor: "#f2f8fa",
-    msTileColor: "#f2f8fa",
+    themeColor: "#003044",
+    msTileColor: "#003044",
     name: "Treasure Hunt - QuaRunTime 2.0",
     iconPaths: {
       msTileImage: "./public/icon.png",
