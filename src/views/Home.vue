@@ -63,12 +63,10 @@
         <h4 class="mt-3"><b>Rules</b></h4>
         <div class="card py-5 px-2 mb-3 mt-4">
           <ul>
-            <li>Please login using your registered mail ID.</li>
-            <br />
-            <li>The treasure hunt starts at 10am till 8pm.</li>
+            <li>The treasure hunt starts at 11 am till 7 pm.</li>
             <br />
             <li>
-              The one who solves the last clue first, will be the winner of the
+              The one who solves the last clue first will be the winner of the
               treasure hunt. He/she may also have to explain the solving of the
               rest of the clues later.
             </li>
@@ -85,24 +83,25 @@
             <br />
             <li>
               All answers must be in small letters with no space or special
-              characters. <br />
-              For example: If the answer is Narendra Modi, type in narendramodi.
+              characters.<br />
+              For example: If the answer is WhatsApp Messenger, type in
+              whatsappmessenger.
             </li>
             <br />
             <li>
-              Enter the full name of any person. <br />
+              Enter the full name of any person.<br />
               For example: If the answer is Neil Alden Armstrong, type in
               neilaldenarmstrong.
             </li>
             <br />
             <li>
-              Enter the full name of any organization/product. <br />
+              Enter the full name of any organization/product.<br />
               For example: If the answer is Meet, type in googlemeet.
             </li>
             <br />
             <li>
               Hints for every level will be posted on the Official Instagram
-              Page at every half n hour intervals starting at 10.30am.
+              Page.
             </li>
             <br />
             <li>
