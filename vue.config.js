@@ -16,5 +16,8 @@ module.exports = {
     iconPaths: {
       msTileImage: "./public/icon.png",
     },
+    manifestOptions: {
+      background_color: "#003044",
+    },
   },
 };
