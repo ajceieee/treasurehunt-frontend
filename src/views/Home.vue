@@ -100,7 +100,8 @@
             </li>
             <br />
             <li>
-              Hints for every level will be posted on the Official Instagram
+              Hints for every level will be posted on the Official
+              <a href="https://instagram.com/ieeeajcesb"><b>Instagram</b></a>
               Page.
             </li>
             <br />
@@ -213,3 +214,15 @@ export default {
   },
 };
 </script>
+<style scoped>
+a {
+  color: white;
+  text-decoration: none;
+}
+a:active {
+  color: black;
+}
+a:focus {
+  color: black;
+}
+</style>
