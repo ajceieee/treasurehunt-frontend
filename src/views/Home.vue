@@ -162,11 +162,8 @@ export default {
       };
 
       await axios
-
-        .get(
-          `https://mighty-island-44038.herokuapp.com/users/${this.uId}`,
-          config
-        )
+        // Replace BACKEND_URL wit the backend url
+        .get(`BACKEND_URL/users/${this.uId}`, config)
         .then((res) => {
           if (res.data.result != null) {
             this.$router.push("/game");
@@ -193,11 +190,7 @@ export default {
         },
       };
       await axios
-        .post(
-          "https://mighty-island-44038.herokuapp.com/users",
-          userData,
-          config
-        )
+        .post("BACKEND_URL/users", userData, config)
         .then((res) => {
           if (res.data.result == null) {
             alert("User already exist");

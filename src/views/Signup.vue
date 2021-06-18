@@ -71,11 +71,8 @@ export default {
       };
 
       await axios
-
-        .get(
-          `https://mighty-island-44038.herokuapp.com/users/${this.uId}`,
-          config
-        )
+        // Replace BACKEND_URL wit the backend url
+        .get(`BACKEND_URL/users/${this.uId}`, config)
         .then((res) => {
           this.spinning = false;
           this.disabled = false;

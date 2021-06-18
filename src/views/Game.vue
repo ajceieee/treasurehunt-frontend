@@ -135,11 +135,8 @@ export default {
       };
 
       await axios
-
-        .get(
-          `https://mighty-island-44038.herokuapp.com/questions/${this.uId}`,
-          config
-        )
+        // Replace BACKEND_URL wit the backend url
+        .get(`BACKEND_URL/questions/${this.uId}`, config)
         .then((res) => {
           if (res.data.result.isQuestionFount) {
             this.isQuestionFount = res.data.result.isQuestionFount;
@@ -170,12 +167,8 @@ export default {
       const answer = { answer: this.answer };
 
       await axios
-
-        .post(
-          `https://mighty-island-44038.herokuapp.com/answer/${this.qId}/${this.uId}`,
-          answer,
-          config
-        )
+        // Replace BACKEND_URL wit the backend url
+        .post(`BACKEND_URL/answer/${this.qId}/${this.uId}`, answer, config)
         .then((res) => {
           this.spinning = false;
           this.answerComment = res.data.message;

@@ -6,13 +6,15 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./registerServiceWorker";
 
+// Replace the firebaseConfig with the credentials from firebase
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDetVPfaQ2KdZzlaUzlzQjKdwF9t0NwG2I",
-  authDomain: "treasure-hunt-comp.firebaseapp.com",
-  projectId: "treasure-hunt-comp",
-  storageBucket: "treasure-hunt-comp.appspot.com",
-  messagingSenderId: "365266434667",
-  appId: "1:365266434667:web:28db1a18f10fd62c010f2e",
+  apiKey: "API_KEY",
+  authDomain: "AUTH_DOMAIN",
+  projectId: "PROGECT_ID",
+  storageBucket: "STORAGE_BUCKET",
+  messagingSenderId: "MESSAGING_SENDER_ID",
+  appId: "APP_ID",
 };
 firebase.initializeApp(firebaseConfig);
 
