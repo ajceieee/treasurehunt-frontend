@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.138c918d4257ff3f90802d3a250150d7.js"
+  "/precache-manifest.7952d0847010723e4358644ea698a7e8.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "treasure-hunt"});
