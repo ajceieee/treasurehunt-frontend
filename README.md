@@ -1,13 +1,5 @@
 # treasure-hunt-frontend
 
-This project works in node version 14
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-```
-```
-nvm install 14
-```
-
 ## Project setup
 ```
 npm install
