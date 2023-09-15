@@ -136,7 +136,7 @@ export default {
 
       await axios
         // Replace BACKEND_URL wit the backend url
-        .get(`BACKEND_URL/questions/${this.uId}`, config)
+        .get(`${process.env.VUE_APP_BACKEND_URL}/questions/${this.uId}`, config)
         .then((res) => {
           if (res.data.result.isQuestionFount) {
             this.isQuestionFount = res.data.result.isQuestionFount;
@@ -168,7 +168,7 @@ export default {
 
       await axios
         // Replace BACKEND_URL wit the backend url
-        .post(`BACKEND_URL/answer/${this.qId}/${this.uId}`, answer, config)
+        .post(`${process.env.VUE_APP_BACKEND_URL}/answer/${this.qId}/${this.uId}`, answer, config)
         .then((res) => {
           this.spinning = false;
           this.answerComment = res.data.message;

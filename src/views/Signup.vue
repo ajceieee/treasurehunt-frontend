@@ -72,7 +72,7 @@ export default {
 
       await axios
         // Replace BACKEND_URL wit the backend url
-        .get(`BACKEND_URL/users/${this.uId}`, config)
+        .get(`${process.env.VUE_APP_BACKEND_URL}/users/${this.uId}`, config)
         .then((res) => {
           this.spinning = false;
           this.disabled = false;

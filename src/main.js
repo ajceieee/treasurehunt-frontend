@@ -9,12 +9,12 @@ import "./registerServiceWorker";
 // Replace the firebaseConfig with the credentials from firebase
 
 const firebaseConfig = {
-  apiKey: "API_KEY",
-  authDomain: "AUTH_DOMAIN",
-  projectId: "PROGECT_ID",
-  storageBucket: "STORAGE_BUCKET",
-  messagingSenderId: "MESSAGING_SENDER_ID",
-  appId: "APP_ID",
+  apiKey: "AIzaSyC5UVuPwBWJ8znIeQY6e4hxN7_jR-tMoJI",
+  authDomain: "treasurehunt-cs.firebaseapp.com",
+  projectId: "treasurehunt-cs",
+  storageBucket: "treasurehunt-cs.appspot.com",
+  messagingSenderId: "460878873176",
+  appId: "1:460878873176:web:7f205eead0bfc799df802d",
 };
 firebase.initializeApp(firebaseConfig);
 

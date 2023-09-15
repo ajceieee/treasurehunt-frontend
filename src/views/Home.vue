@@ -163,7 +163,7 @@ export default {
 
       await axios
         // Replace BACKEND_URL wit the backend url
-        .get(`BACKEND_URL/users/${this.uId}`, config)
+        .get(`${process.env.VUE_APP_BACKEND_URL}/users/${this.uId}`, config)
         .then((res) => {
           if (res.data.result != null) {
             this.$router.push("/game");
@@ -190,7 +190,7 @@ export default {
         },
       };
       await axios
-        .post("BACKEND_URL/users", userData, config)
+        .post(`${process.env.VUE_APP_BACKEND_URL}/users`, userData, config)
         .then((res) => {
           if (res.data.result == null) {
             alert("User already exist");
